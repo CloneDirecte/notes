@@ -1,0 +1,123 @@
+.notes-app {
+  margin: 0;
+}
+
+.informations {
+  background: var(--gradient);
+  border-top: none;
+  border-left: none;
+  width: 350px;
+  height: 52px;
+  border-radius: 0 0 25px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.informations span {
+  margin-left: 10px;
+}
+
+.informations span:first-child {
+  margin-top: 5px;
+}
+
+.notes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.notes-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div :not(:last-child) .notes-container {
+  padding-bottom: 15px;
+  border-bottom: 1px solid;
+  margin-bottom: 25px;
+}
+
+.matiere {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.moyenne {
+  margin-bottom: 10px;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  background: var(--gradient);
+}
+
+.footer-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.moyennes-user .moyenne:first-child {
+  margin-right: 25px;
+}
+
+.moyennes-classe .moyenne:first-child {
+  margin-right: 25px;
+}
+
+.trimestres {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+}
+
+.trimestres > * {
+  margin-right: 25px;
+}
+
+.trimestres .active {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.trimestres .inactive {
+  opacity: 20%;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    height: 150px;
+  }
+  .moyennes-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .moyennes-classe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .trimestres {
+    font-size: 60%;
+  }
+}
