@@ -45,6 +45,7 @@ div :not(:last-child) .notes-container {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
 .bold {
@@ -84,6 +85,7 @@ div :not(:last-child) .notes-container {
   justify-content: center;
   flex-direction: row;
   height: 100%;
+  text-align: center;
 }
 
 .trimestres > * {
