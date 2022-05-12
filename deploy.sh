@@ -3,6 +3,9 @@
 # abort on errors
 set -e
 
+# remove current build
+rm -rf dist
+
 # build
 npm run build
 
