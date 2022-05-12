@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { login } from "ed-notes";
 

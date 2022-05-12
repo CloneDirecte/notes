@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { notes } from "ed-notes";
-import axios from "axios";
 import spinner from "../../spinner.svg";
 import "./notes.css";
 
