@@ -55,6 +55,19 @@ export default function Login() {
           {buttonDisabler()}
         </div>
       </div>
+      <div className="montserrat footer-login">
+        <p>
+          <a href="https://github.com/CloneDirecte/notes">
+            👨‍💻 Code disponible en open-source sur GitHub
+          </a>
+        </p>
+        <p>
+          Nouveau projet:{" "}
+          <a href="https://github.com/CloneDirecte/notes-telegram-bot">
+            📨 un bot telegram qui vous informe de vos nouvelles notes
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

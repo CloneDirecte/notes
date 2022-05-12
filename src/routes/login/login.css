@@ -1,4 +1,5 @@
 .login {
+  margin-top: 85px;
   width: 500px;
   height: 350px;
   background: var(--gradient);
@@ -10,10 +11,12 @@
   margin-top: 0;
   font-size: 3em;
   text-shadow: 0 0 8px black;
+  text-decoration: underline rgba(255, 255, 255, 0);
+  transition: text-decoration-color 300ms;
 }
 
 .title:hover {
-  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 1);
 }
 
 .login-inside {
@@ -52,4 +55,29 @@ input:hover {
 .error {
   color: red;
   font-weight: 800;
+}
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: white;
+  text-decoration: underline;
+}
+a:hover {
+  color: #0f8fd1;
+}
+
+.footer-login {
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .login {
+    width: 350px;
+  }
 }
