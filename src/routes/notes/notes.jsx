@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { notes } from "ed-notes";
 import axios from "axios";
 import spinner from "../../spinner.svg";
 import "./notes.css";
@@ -11,27 +12,17 @@ export default function Notes() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesPeriode, setNotesPeriode] = useState(2);
   const [activeIndex, setActiveIndex] = useState(notesPeriode);
-  const [notes, setNotes] = useState();
+  const [notesData, setNotes] = useState();
 
   useEffect(() => {
     if (!location.state) {
       navigate("/login");
     }
-    var data = `data={\n\t"token": "${location.state.token}"\n}`;
-
-    var config = {
-      method: "post",
-      url: `https://api.ecoledirecte.com/v3/eleves/${location.state.accountId}/notes.awp?verbe=get`,
-      headers: {},
-      data: data,
-    };
-
     async function fetchData() {
-      await axios(config).then((res) => {
-        console.log(res);
-        setNotes(res.data.data);
-        setIsLoaded(true);
-      });
+      var edNotes = await notes(location.state.token, location.state.accountId);
+      console.log(edNotes);
+      setNotes(edNotes.data);
+      setIsLoaded(true);
     }
 
     fetchData();
@@ -46,15 +37,17 @@ export default function Notes() {
       <div className="montserrat notes-app">
         <div className="informations">
           <span>
-            Conseil de classe le {notes.periodes[notesPeriode].dateConseil} à{" "}
-            {notes.periodes[notesPeriode].heureConseil}
+            Conseil de classe le {notesData.periodes[notesPeriode].dateConseil}{" "}
+            à {notesData.periodes[notesPeriode].heureConseil}
           </span>
           <span>
             Moyennes calculées à{" "}
-            {notes.periodes[notesPeriode].ensembleMatieres.dateCalcul.slice(-5)}
+            {notesData.periodes[notesPeriode].ensembleMatieres.dateCalcul.slice(
+              -5
+            )}
           </span>
         </div>
-        {notes.periodes[notesPeriode].ensembleMatieres.disciplines.map(
+        {notesData.periodes[notesPeriode].ensembleMatieres.disciplines.map(
           (item) => (
             <div className="notes">
               <div className="notes-container">
@@ -90,7 +83,7 @@ export default function Notes() {
           )
         )}
         <div className="trimestres">
-          {notes.periodes.map((item, index) => (
+          {notesData.periodes.map((item, index) => (
             <h2
               className={activeIndex === index ? "active" : "inactive"}
               key={index}
@@ -107,7 +100,7 @@ export default function Notes() {
                 Moyenne générale:{" "}
                 <span className="bold">
                   {
-                    notes.periodes[notesPeriode].ensembleMatieres
+                    notesData.periodes[notesPeriode].ensembleMatieres
                       .moyenneGenerale
                   }
                 </span>
@@ -115,7 +108,10 @@ export default function Notes() {
               <span className="moyenne">
                 Moyenne de la classe:{" "}
                 <span className="bold">
-                  {notes.periodes[notesPeriode].ensembleMatieres.moyenneClasse}
+                  {
+                    notesData.periodes[notesPeriode].ensembleMatieres
+                      .moyenneClasse
+                  }
                 </span>
               </span>
             </div>
@@ -123,13 +119,13 @@ export default function Notes() {
               <span className="moyenne">
                 Moyenne classe min.:{" "}
                 <span className="bold">
-                  {notes.periodes[notesPeriode].ensembleMatieres.moyenneMin}
+                  {notesData.periodes[notesPeriode].ensembleMatieres.moyenneMin}
                 </span>
               </span>
               <span className="moyenne">
                 Moyenne classe max.:{" "}
                 <span className="bold">
-                  {notes.periodes[notesPeriode].ensembleMatieres.moyenneMax}
+                  {notesData.periodes[notesPeriode].ensembleMatieres.moyenneMax}
                 </span>
               </span>
             </div>
