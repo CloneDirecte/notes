@@ -119,7 +119,7 @@ export default function Notes({ notesData }) {
       <div className="center montserrat">
         <h1>Aucune donnée trouvée.</h1>
         <span className={styles.loggedIn}>
-          Vous n'êtes probablement pas connéctés.
+          Vous n&apos;êtes probablement pas connéctés.
         </span>
         <Link href="/">
           <a className="goBack">Retournez à la page de login</a>
