@@ -28,7 +28,7 @@ export default function Notes({ notesData }) {
         </div>
         {notesData.periodes[notesPeriode].ensembleMatieres.disciplines.map(
           (item) => (
-            <div className={styles.notes}>
+            <div className={styles.notes} key={item.discipline}>
               <div className={styles.notesContainer}>
                 <h2 className={styles.matiere} key={item.discipline}>
                   {item.discipline}
